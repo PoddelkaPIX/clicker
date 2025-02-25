@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://ce2elcrqiusr5"]
+
+[ext_resource type="Script" uid="uid://dfwlk8dfekmcm" path="res://scripts/game/character.gd" id="1_6fqj8"]
+[ext_resource type="Script" uid="uid://b453a0hapoxdv" path="res://scripts/plugins/game_attributes/attribute.gd" id="2_lwf2p"]
+[ext_resource type="Script" uid="uid://cr4c4s444nyjs" path="res://scripts/plugins/game_status_effects/status_effect_manager.gd" id="3_c2nao"]
+[ext_resource type="Script" uid="uid://bqsn5heg36t8m" path="res://scripts/game/death_handler.gd" id="4_jra64"]
+[ext_resource type="Script" uid="uid://f53lpsuhhgqg" path="res://scripts/plugins/finit_state_machine/finite_state_machine.gd" id="5_yjsab"]
+[ext_resource type="Script" uid="uid://c6osbft6wlqrd" path="res://scripts/plugins/finit_state_machine/fsm_state.gd" id="6_nfc11"]
+[ext_resource type="Script" uid="uid://cgwbrpeyp3jsx" path="res://scripts/plugins/finit_state_machine/fsm_transition.gd" id="7_ty230"]
+[ext_resource type="Script" uid="uid://eogjmx0cjc06" path="res://scripts/game/state_death.gd" id="8_nfc11"]
+
+[node name="BaseCharacter" type="CharacterBody2D" groups=["Character"]]
+script = ExtResource("1_6fqj8")
+
+[node name="Attributes" type="Node" parent="."]
+
+[node name="HP" type="Node" parent="Attributes"]
+unique_name_in_owner = true
+script = ExtResource("2_lwf2p")
+metadata/_custom_type_script = "uid://b453a0hapoxdv"
+
+[node name="Damage" type="Node" parent="Attributes"]
+unique_name_in_owner = true
+script = ExtResource("2_lwf2p")
+metadata/_custom_type_script = "uid://b453a0hapoxdv"
+
+[node name="MoveSpeed" type="Node" parent="Attributes"]
+unique_name_in_owner = true
+script = ExtResource("2_lwf2p")
+metadata/_custom_type_script = "uid://b453a0hapoxdv"
+
+[node name="Abilities" type="Node" parent="."]
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="StatusEffectManager" type="Node" parent="."]
+script = ExtResource("3_c2nao")
+metadata/_custom_type_script = "uid://cr4c4s444nyjs"
+
+[node name="StateChangers" type="Node" parent="."]
+
+[node name="DeathChanger" type="Node" parent="StateChangers" node_paths=PackedStringArray("fsm")]
+script = ExtResource("4_jra64")
+fsm = NodePath("../../FSM")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="FSM" type="Node" parent="."]
+script = ExtResource("5_yjsab")
+metadata/_custom_type_script = "uid://f53lpsuhhgqg"
+
+[node name="Idle" type="Node" parent="FSM"]
+script = ExtResource("6_nfc11")
+metadata/_custom_type_script = "uid://c6osbft6wlqrd"
+
+[node name="ToDeath" type="Node" parent="FSM/Idle" node_paths=PackedStringArray("to")]
+script = ExtResource("7_ty230")
+to = NodePath("../../Death")
+metadata/_custom_type_script = "uid://cgwbrpeyp3jsx"
+
+[node name="ToHit" type="Node" parent="FSM/Idle" node_paths=PackedStringArray("to")]
+script = ExtResource("7_ty230")
+to = NodePath("../../Hit")
+metadata/_custom_type_script = "uid://cgwbrpeyp3jsx"
+
+[node name="Death" type="Node" parent="FSM"]
+script = ExtResource("6_nfc11")
+metadata/_custom_type_script = "uid://c6osbft6wlqrd"
+
+[node name="ToIdle" type="Node" parent="FSM/Death" node_paths=PackedStringArray("to")]
+script = ExtResource("7_ty230")
+to = NodePath("../../Idle")
+metadata/_custom_type_script = "uid://cgwbrpeyp3jsx"
+
+[node name="ToHit" type="Node" parent="FSM/Death" node_paths=PackedStringArray("to")]
+script = ExtResource("7_ty230")
+to = NodePath("../../Hit")
+metadata/_custom_type_script = "uid://cgwbrpeyp3jsx"
+
+[node name="Hit" type="Node" parent="FSM"]
+script = ExtResource("6_nfc11")
+metadata/_custom_type_script = "uid://c6osbft6wlqrd"
+
+[node name="ToIdle" type="Node" parent="FSM/Hit" node_paths=PackedStringArray("to")]
+script = ExtResource("7_ty230")
+to = NodePath("../../Idle")
+metadata/_custom_type_script = "uid://cgwbrpeyp3jsx"
+
+[node name="ToDeath" type="Node" parent="FSM/Hit" node_paths=PackedStringArray("to")]
+script = ExtResource("7_ty230")
+to = NodePath("../../Death")
+metadata/_custom_type_script = "uid://cgwbrpeyp3jsx"
+
+[node name="ToHit" type="Node" parent="FSM/Hit" node_paths=PackedStringArray("to")]
+script = ExtResource("7_ty230")
+to = NodePath("..")
+metadata/_custom_type_script = "uid://cgwbrpeyp3jsx"
+
+[node name="StateHandlers" type="Node" parent="."]
+
+[node name="StateDeath" type="Node" parent="StateHandlers"]
+script = ExtResource("8_nfc11")
+
+[connection signal="entered" from="FSM/Death" to="StateHandlers/StateDeath" method="_on_death_entered"]

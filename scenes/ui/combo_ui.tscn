@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://l8m7xuwhy37b"]
+
+[ext_resource type="Script" uid="uid://gm3mddtwwoe1" path="res://scripts/ui/combo_ui.gd" id="1_ur2x8"]
+
+[node name="ComboUi" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ur2x8")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+text = "+ 000"

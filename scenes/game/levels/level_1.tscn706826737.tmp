@@ -1,0 +1,146 @@
+[gd_scene load_steps=7 format=3 uid="uid://ct488rhs2x8uj"]
+
+[ext_resource type="Script" uid="uid://lmxxc5dp8nk7" path="res://scripts/game/level_1.gd" id="1_dmp7y"]
+[ext_resource type="PackedScene" uid="uid://bf8e0kty6q643" path="res://scenes/game/core.tscn" id="2_d8fp6"]
+[ext_resource type="PackedScene" uid="uid://2j363hw2uxdx" path="res://scenes/game/cursor.tscn" id="3_u4pql"]
+[ext_resource type="PackedScene" uid="uid://bctnoskaf4lbx" path="res://scenes/ui/ui.tscn" id="4_8jnwb"]
+[ext_resource type="PackedScene" uid="uid://xrhtn4rlqbex" path="res://scenes/game/combo_manager.tscn" id="5_0mamm"]
+[ext_resource type="PackedScene" uid="uid://dxi4b3i0lxn24" path="res://scenes/game/score_manager.tscn" id="6_xr372"]
+
+[node name="Level1" type="Node2D" node_paths=PackedStringArray("core")]
+script = ExtResource("1_dmp7y")
+core = NodePath("Characers/Core")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(961, 537)
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="SpawnPoint" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-617, -77)
+
+[node name="SpawnPoint2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-617, 157)
+
+[node name="SpawnPoint3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-617, 603)
+
+[node name="SpawnPoint4" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-677, 433)
+
+[node name="SpawnPoint5" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-677, 883)
+
+[node name="SpawnPoint6" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-526, 1150)
+
+[node name="SpawnPoint7" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(5, 1209)
+
+[node name="SpawnPoint8" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(345, 1209)
+
+[node name="SpawnPoint9" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(570, 1209)
+
+[node name="SpawnPoint10" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(878, 1209)
+
+[node name="SpawnPoint11" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1177, 1209)
+
+[node name="SpawnPoint12" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1416, 1209)
+
+[node name="SpawnPoint13" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1623, 1200)
+
+[node name="SpawnPoint14" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1834, 1200)
+
+[node name="SpawnPoint15" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(2721, 1025)
+
+[node name="SpawnPoint16" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(2721, 832)
+
+[node name="SpawnPoint17" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(2726, 584)
+
+[node name="SpawnPoint18" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(2712, 345)
+
+[node name="SpawnPoint19" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(2712, 69)
+
+[node name="SpawnPoint20" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(2694, -60)
+
+[node name="SpawnPoint21" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1834, -77)
+
+[node name="SpawnPoint22" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1540, -95)
+
+[node name="SpawnPoint23" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1342, -95)
+
+[node name="SpawnPoint24" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1149, -95)
+
+[node name="SpawnPoint25" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(814, -118)
+
+[node name="SpawnPoint26" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(469, -127)
+
+[node name="SpawnPoint27" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(193, -132)
+
+[node name="SpawnPoint28" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(69, -132)
+
+[node name="SpawnPoint29" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(69, -132)
+
+[node name="Cursor" parent="." instance=ExtResource("3_u4pql")]
+position = Vector2(598, 535)
+
+[node name="AbilityManager" parent="Cursor" index="3"]
+script = null
+
+[node name="ComboUi" parent="Cursor" index="7" node_paths=PackedStringArray("combo_counter")]
+combo_counter = NodePath("../../ComboManager")
+
+[node name="DifficultyTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Node"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.0980392, 0.0980392, 0.141176, 1)
+
+[node name="Ui" parent="Node" instance=ExtResource("4_8jnwb")]
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="ComboManager" parent="." instance=ExtResource("5_0mamm")]
+
+[node name="ScoreManager" parent="." instance=ExtResource("6_xr372")]
+
+[node name="Characers" type="Node" parent="."]
+
+[node name="Core" parent="Characers" instance=ExtResource("2_d8fp6")]
+position = Vector2(961, 537)
+
+[connection signal="timeout" from="DifficultyTimer" to="." method="_on_difficulty_timer_timeout"]
+
+[editable path="Cursor"]

@@ -1,0 +1,147 @@
+[gd_scene load_steps=10 format=3 uid="uid://ct488rhs2x8uj"]
+
+[ext_resource type="Script" uid="uid://povoq8cqfrb3" path="res://scripts/game/level.gd" id="1_2u4xi"]
+[ext_resource type="PackedScene" uid="uid://bf8e0kty6q643" path="res://scenes/game/core.tscn" id="2_d8fp6"]
+[ext_resource type="PackedScene" uid="uid://bctnoskaf4lbx" path="res://scenes/ui/ui.tscn" id="4_8jnwb"]
+[ext_resource type="PackedScene" uid="uid://xrhtn4rlqbex" path="res://scenes/game/combo_manager.tscn" id="5_0mamm"]
+[ext_resource type="PackedScene" uid="uid://bwo4xun8dsieb" path="res://scenes/game/cursor.tscn" id="6_1bryu"]
+[ext_resource type="Script" uid="uid://xsupb7471inp" path="res://scripts/game/managers/character_manager.gd" id="6_2u4xi"]
+[ext_resource type="Script" uid="uid://d0j0xfnyioiv8" path="res://scripts/game/spawner.gd" id="6_unvbt"]
+[ext_resource type="PackedScene" uid="uid://dxi4b3i0lxn24" path="res://scenes/game/score_manager.tscn" id="6_xr372"]
+[ext_resource type="PackedScene" uid="uid://g510x54dffsq" path="res://scenes/game/characters/enemy_1.tscn" id="7_2u4xi"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_2u4xi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(961, 537)
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="SpawnPoint" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-617, -77)
+
+[node name="SpawnPoint2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-617, 157)
+
+[node name="SpawnPoint3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-617, 603)
+
+[node name="SpawnPoint4" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-677, 433)
+
+[node name="SpawnPoint5" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-677, 883)
+
+[node name="SpawnPoint6" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-526, 1150)
+
+[node name="SpawnPoint7" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(5, 1209)
+
+[node name="SpawnPoint8" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(345, 1209)
+
+[node name="SpawnPoint9" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(570, 1209)
+
+[node name="SpawnPoint10" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(878, 1209)
+
+[node name="SpawnPoint11" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1177, 1209)
+
+[node name="SpawnPoint12" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1416, 1209)
+
+[node name="SpawnPoint13" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1623, 1200)
+
+[node name="SpawnPoint14" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1834, 1200)
+
+[node name="SpawnPoint15" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(2721, 1025)
+
+[node name="SpawnPoint16" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(2721, 832)
+
+[node name="SpawnPoint17" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(2726, 584)
+
+[node name="SpawnPoint18" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(2712, 345)
+
+[node name="SpawnPoint19" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(2712, 69)
+
+[node name="SpawnPoint20" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(2694, -60)
+
+[node name="SpawnPoint21" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1834, -77)
+
+[node name="SpawnPoint22" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1540, -95)
+
+[node name="SpawnPoint23" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1342, -95)
+
+[node name="SpawnPoint24" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1149, -95)
+
+[node name="SpawnPoint25" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(814, -118)
+
+[node name="SpawnPoint26" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(469, -127)
+
+[node name="SpawnPoint27" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(193, -132)
+
+[node name="SpawnPoint28" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(69, -132)
+
+[node name="SpawnPoint29" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(69, -132)
+
+[node name="Children" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Children"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.0980392, 0.0980392, 0.141176, 1)
+
+[node name="Ui" parent="Children" instance=ExtResource("4_8jnwb")]
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="ComboManager" parent="." instance=ExtResource("5_0mamm")]
+
+[node name="ScoreManager" parent="." instance=ExtResource("6_xr372")]
+
+[node name="Cursor" parent="." instance=ExtResource("6_1bryu")]
+
+[node name="ComboUi" parent="Cursor" index="0" node_paths=PackedStringArray("combo_counter")]
+combo_counter = NodePath("../../ComboManager")
+
+[node name="CharacterManager" type="Node" parent="."]
+script = ExtResource("6_2u4xi")
+metadata/_custom_type_script = "uid://xsupb7471inp"
+
+[node name="Core" parent="CharacterManager" instance=ExtResource("2_d8fp6")]
+position = Vector2(961, 537)
+
+[node name="Spawner" type="Node" parent="CharacterManager" node_paths=PackedStringArray("_spawn_points_container")]
+script = ExtResource("6_unvbt")
+_character_scene = ExtResource("7_2u4xi")
+_spawn_points_container = NodePath("../../SpawnPoints")
+metadata/_custom_type_script = "uid://d0j0xfnyioiv8"
+
+[editable path="Cursor"]

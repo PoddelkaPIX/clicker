@@ -1,0 +1,139 @@
+[gd_scene load_steps=22 format=3 uid="uid://bf8e0kty6q643"]
+
+[ext_resource type="PackedScene" uid="uid://ce2elcrqiusr5" path="res://scenes/game/_base_character.tscn" id="1_66ddm"]
+[ext_resource type="PackedScene" uid="uid://d6uxjpnmrvny" path="res://scenes/game/abilities/core_pulse.tscn" id="2_7krgo"]
+[ext_resource type="Script" uid="uid://c461n5r2qnuqd" path="res://scripts/game/characters/core.gd" id="2_poldg"]
+[ext_resource type="Texture2D" uid="uid://dy2crba7nf7ht" path="res://assets/images/pinpng.com-full-moon-png-433920.png" id="4_ef3yq"]
+[ext_resource type="Texture2D" uid="uid://dy87el4gymylu" path="res://assets/images/light.png" id="4_poldg"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7krgo"]
+animation = &"hit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_poldg"]
+animation = &"hit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_37elk"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_44cjn"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qnmw5"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pn4tr"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3gv43"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bea3v"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1v8wh"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7krgo"]
+states/hit/node = SubResource("AnimationNodeAnimation_poldg")
+states/hit/position = Vector2(467, 189)
+"states/hit 2/node" = SubResource("AnimationNodeAnimation_7krgo")
+"states/hit 2/position" = Vector2(637, 149)
+states/idle/node = SubResource("AnimationNodeAnimation_37elk")
+states/idle/position = Vector2(433, 87)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_44cjn"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_qnmw5"), "hit 2", "idle", SubResource("AnimationNodeStateMachineTransition_pn4tr"), "hit", "hit 2", SubResource("AnimationNodeStateMachineTransition_3gv43"), "hit 2", "hit", SubResource("AnimationNodeStateMachineTransition_bea3v"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_1v8wh")]
+
+[sub_resource type="Animation" id="Animation_xdt32"]
+resource_name = "idle"
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_ryrim"]
+resource_name = "hit"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lo1y3"]
+_data = {
+&"hit": SubResource("Animation_ryrim"),
+&"idle": SubResource("Animation_xdt32")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5wp2u"]
+radius = 70.0071
+
+[sub_resource type="Animation" id="Animation_7krgo"]
+resource_name = "light_rotation"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/PointLight2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_poldg"]
+_data = {
+&"light_rotation": SubResource("Animation_7krgo")
+}
+
+[node name="Core" instance=ExtResource("1_66ddm")]
+collision_mask = 0
+script = ExtResource("2_poldg")
+
+[node name="HP" parent="Attributes" index="0"]
+_value = 1.0
+
+[node name="CorePulse" parent="Abilities" index="0" instance=ExtResource("2_7krgo")]
+visible = false
+
+[node name="AnimationTree" parent="." index="5"]
+tree_root = SubResource("AnimationNodeStateMachine_7krgo")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+&"": SubResource("AnimationLibrary_lo1y3")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7"]
+shape = SubResource("CircleShape2D_5wp2u")
+
+[node name="AnimationPlayerLight" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+&"": SubResource("AnimationLibrary_poldg")
+}
+autoplay = "light_rotation"
+movie_quit_on_finish = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Body" index="0"]
+color = Color(0.219608, 0.352941, 1, 1)
+shadow_enabled = true
+texture = ExtResource("4_poldg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Body" index="1"]
+modulate = Color(0.227451, 0.490196, 1, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_ef3yq")
+
+[node name="HPLabel" type="Label" parent="." index="13"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+
+[connection signal="value_changed" from="Attributes/HP" to="." method="_on_hp_value_changed"]

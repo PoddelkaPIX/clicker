@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://dd6v0q2vhdjrv"]
+
+[ext_resource type="Script" uid="uid://bmhhgv5quvlxg" path="res://scenes/game/characters/enemy_boss_1/enemy_boss_1.gd" id="1_xr2rd"]
+[ext_resource type="Texture2D" uid="uid://dy2crba7nf7ht" path="res://assets/images/pinpng.com-full-moon-png-433920.png" id="2_lggev"]
+[ext_resource type="Script" uid="uid://cqaotaw0cd6mp" path="res://addons/trail_2d/trail_2d.gd" id="5_rkphe"]
+[ext_resource type="AudioStream" uid="uid://bp3ei628oocbp" path="res://assets/sounds/1.mp3" id="6_ibsxc"]
+[ext_resource type="AudioStream" uid="uid://dytp3nqngr1gy" path="res://assets/sounds/2.mp3" id="7_gnaew"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35nwb"]
+radius = 424.058
+
+[sub_resource type="Curve" id="Curve_yepti"]
+_data = [Vector2(0, 0.798254), 0.0, 0.0, 0, 0, Vector2(0.435443, 0.312803), -1.04245, -1.04245, 0, 0, Vector2(0.744304, 0.0669254), -0.622575, -0.622575, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Animation" id="Animation_j7rbw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pinpng_com-full-moon-png-433920:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.568627, 0.392157, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l0wkf"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pinpng_com-full-moon-png-433920:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.568627, 0.392157, 1), Color(1, 0.568627, 0.392157, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7rbw"]
+_data = {
+&"RESET": SubResource("Animation_j7rbw"),
+&"death": SubResource("Animation_l0wkf")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j5b7g"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_v3emo"]
+states/death/node = SubResource("AnimationNodeAnimation_j5b7g")
+states/death/position = Vector2(483, 100)
+
+[node name="EnemyBoss_1" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_xr2rd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_35nwb")
+
+[node name="Pinpng_com-full-moon-png-433920" type="Sprite2D" parent="."]
+modulate = Color(1, 0.568627, 0.392157, 1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_lggev")
+
+[node name="Trail2D" type="Line2D" parent="."]
+width = 125.0
+width_curve = SubResource("Curve_yepti")
+default_color = Color(1, 0.568627, 0.392157, 1)
+script = ExtResource("5_rkphe")
+length = 280
+metadata/_custom_type_script = "uid://cqaotaw0cd6mp"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ibsxc")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_gnaew")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_j7rbw")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_v3emo")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="HPLabel" type="Label" parent="."]
+visible = false
+offset_left = -226.0
+offset_top = -279.0
+offset_right = 231.0
+offset_bottom = 267.0
+theme_override_font_sizes/font_size = 400
+text = "40"
+horizontal_alignment = 1

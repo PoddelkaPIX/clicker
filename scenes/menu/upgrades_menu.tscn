@@ -1,0 +1,121 @@
+[gd_scene load_steps=2 format=3 uid="uid://5kuy3afcst1f"]
+
+[ext_resource type="Script" uid="uid://dlbbjthqx1a4g" path="res://scripts/menu/upgrades_menu.gd" id="1_atc4h"]
+
+[node name="UpgradesMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_atc4h")
+
+[node name="ExperienceLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Опыт"
+horizontal_alignment = 1
+
+[node name="ContinueBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -452.0
+offset_top = -150.0
+offset_right = 452.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 124
+text = "Продолжить"
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 564.0
+offset_bottom = 140.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CoreHPContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CoreHPLabel" type="Label" parent="MarginContainer/VBoxContainer/CoreHPContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "1"
+
+[node name="CoreHPButton" type="Button" parent="MarginContainer/VBoxContainer/CoreHPContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Здоровье ядра +1"
+
+[node name="CoreHPPriceLabel" type="Label" parent="MarginContainer/VBoxContainer/CoreHPContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="CursorDamageContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CursorDamageLabel" type="Label" parent="MarginContainer/VBoxContainer/CursorDamageContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "1"
+
+[node name="CursorDamageBtn" type="Button" parent="MarginContainer/VBoxContainer/CursorDamageContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Урон клика +1"
+
+[node name="CursorDamagePriceLabel" type="Label" parent="MarginContainer/VBoxContainer/CursorDamageContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="CoreDamageContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CoreDamageLabel" type="Label" parent="MarginContainer/VBoxContainer/CoreDamageContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="CoreDamageBtn" type="Button" parent="MarginContainer/VBoxContainer/CoreDamageContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "Урон ядра +1"
+
+[node name="CoreDamagePriceLabel" type="Label" parent="MarginContainer/VBoxContainer/CoreDamageContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[connection signal="pressed" from="ContinueBtn" to="." method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CoreHPContainer/CoreHPButton" to="." method="_on_core_hp_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CursorDamageContainer2/CursorDamageBtn" to="." method="_on_cursor_damage_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CoreDamageContainer3/CoreDamageBtn" to="." method="_on_core_damage_btn_pressed"]

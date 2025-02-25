@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://bctnoskaf4lbx"]
+
+[ext_resource type="Script" uid="uid://c1y8ls2h7kwf3" path="res://scripts/ui/ui.gd" id="1_f5cxw"]
+[ext_resource type="PackedScene" uid="uid://cr72s4043bsqu" path="res://scenes/ui/progress_statistics.tscn" id="2_f5cxw"]
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_f5cxw")
+metadata/_edit_use_anchors_ = true
+
+[node name="ExperienceLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -961.0
+offset_top = -273.0
+offset_right = 961.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 200
+text = "0"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_right = 256.0
+offset_bottom = 273.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 200
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="BestTimeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -148.0
+offset_right = 148.0
+offset_bottom = 308.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "Лучшее время"
+
+[node name="ProgressStatistics" parent="." instance=ExtResource("2_f5cxw")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.129
+offset_right = 0.319977
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true

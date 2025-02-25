@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3a057m7ujbks"]
+
+[ext_resource type="Script" uid="uid://ckbtywxvvolcy" path="res://scripts/menu/lose_screen.gd" id="1_3418g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0enfs"]
+font_size = 224
+
+[node name="LoseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3418g")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 37.0
+offset_right = 1741.0
+offset_bottom = 343.0
+text = "Ты проиграл"
+label_settings = SubResource("LabelSettings_0enfs")
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 701.0
+offset_right = 1691.0
+offset_bottom = 878.0
+theme_override_font_sizes/font_size = 100
+text = "Время"
+horizontal_alignment = 1
+
+[node name="ExperienceLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 834.0
+offset_right = 1692.0
+offset_bottom = 1011.0
+theme_override_font_sizes/font_size = 100
+text = "Опыт"
+horizontal_alignment = 1
+
+[node name="UpgradesMenuBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 622.0
+offset_top = 423.0
+offset_right = 1393.0
+offset_bottom = 695.0
+theme_override_font_sizes/font_size = 120
+disabled = true
+text = "Улучшение"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="UpgradesMenuBtn" to="." method="_on_upgrades_menu_btn_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,145 @@
+[gd_scene load_steps=15 format=3 uid="uid://cswyu3ry65mqe"]
+
+[ext_resource type="Script" uid="uid://cd5rnklesi747" path="res://scenes/game/characters/enemy_2/enemy_2.gd" id="1_8npsq"]
+[ext_resource type="Script" uid="uid://cqaotaw0cd6mp" path="res://addons/trail_2d/trail_2d.gd" id="1_ff5x0"]
+[ext_resource type="Texture2D" uid="uid://dy2crba7nf7ht" path="res://assets/images/pinpng.com-full-moon-png-433920.png" id="2_8npsq"]
+[ext_resource type="AudioStream" uid="uid://bp3ei628oocbp" path="res://assets/sounds/1.mp3" id="6_06hps"]
+[ext_resource type="AudioStream" uid="uid://dytp3nqngr1gy" path="res://assets/sounds/2.mp3" id="7_h84go"]
+[ext_resource type="Texture2D" uid="uid://dxbqfnjbr0rls" path="res://assets/images/scale_1200.png" id="8_06hps"]
+
+[sub_resource type="Curve" id="Curve_40i8y"]
+_data = [Vector2(0, 0.798254), 0.0, 0.0, 0, 0, Vector2(0.435443, 0.312803), -1.04245, -1.04245, 0, 0, Vector2(0.744304, 0.0669254), -0.622575, -0.622575, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0d6nd"]
+radius = 44.4072
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_06hps"]
+polygon = PackedVector2Array(64.7, -701, -61.9, -701, -98.7, -697, -105.7, -697, -153.9, -687, -158.8, -687, -202.8, -674, -206.9, -674, -252.9, -657, -255.9, -657, -298.9, -637, -302, -637, -351.1, -610, -353.1, -610, -401.1, -578, -403.2, -578, -428.2, -558, -430.3, -558, -473.2, -520, -475.3, -520, -518.3, -476, -519.5, -476, -573.5, -408, -574.6, -408, -618.6, -336, -619.8, -336, -646.7, -278, -647.9, -278, -661.9, -240, -663, -240, -679, -186, -680.1, -186, -688.2, -149, -689.2, -149, -697.2, -97, -698.3, -97, -701.5, -58, -701.5, 66, -693.5, 121.3, -693.5, 127.2, -684.5, 164, -684.5, 169.3, -666.5, 227.2, -666.5, 230.4, -649.5, 271.3, -649.5, 274.5, -626.5, 321.4, -626.5, 323.5, -603.5, 362.4, -603.5, 364.6, -571.5, 410.5, -571.5, 412.7, -543.5, 446.6, -543.5, 448.8, -485.5, 509.7, -485.5, 510.9, -449.5, 541.8, -449.5, 543, -406.5, 575, -406.5, 576.1, -353.5, 609.1, -353.5, 610.2, -322.5, 626.2, -322.5, 627.3, -275.5, 648.2, -275.5, 649.4, -225.5, 667.4, -225.5, 668.5, -148.5, 688.5, -148.5, 689.7, -71.3, 701, 72.3, 701, 101.8, 697, 108.7, 697, 155.9, 687, 160.8, 687, 243.8, 661, 246.9, 661, 293.9, 640, 297, 640, 347.1, 613, 349.1, 613, 392.1, 585, 394.2, 585, 429.2, 558, 431.3, 558, 475.2, 519, 477.3, 519, 517.3, 478, 518.5, 478, 568.5, 416, 569.6, 416, 617.6, 339, 618.8, 339, 641.8, 291, 642.9, 291, 658.9, 250, 660, 250, 678, 192, 679.1, 192, 689.1, 147, 690.2, 147, 698.2, 94, 699.4, 94, 701.5, 66, 701.5, -67.8, 697.5, -99, 697.5, -106.2, 680.5, -182.4, 680.5, -186.3, 659.5, -247.5, 659.5, -250.4, 621.5, -331.4, 621.5, -333.6, 579.5, -399.7, 579.5, -401.7, 533.5, -458.9, 533.5, -460.8, 484.5, -510.8, 484.5, -511.9, 429.5, -558, 429.5, -559.1, 368.5, -600.1, 368.5, -601.2, 295.5, -639.3, 295.5, -640.4, 233.5, -664.4, 233.5, -665.5, 156.5, -686.5, 156.5, -687.7, 101.5, -696.8, 101.5, -697.8)
+
+[sub_resource type="Animation" id="Animation_h84go"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_06hps"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h84go"]
+_data = {
+&"RESET": SubResource("Animation_h84go"),
+&"death": SubResource("Animation_06hps")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s1y54"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tlvmp"]
+states/death/node = SubResource("AnimationNodeAnimation_s1y54")
+states/death/position = Vector2(536, 100)
+
+[node name="Enemy2" type="CharacterBody2D" groups=["Character"]]
+z_index = 1
+collision_mask = 2
+script = ExtResource("1_8npsq")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.991688, 0.606954, 1, 1)
+texture = ExtResource("8_06hps")
+
+[node name="Trail2D" type="Line2D" parent="."]
+width = 90.0
+width_curve = SubResource("Curve_40i8y")
+default_color = Color(0.862745, 0.792157, 0.862745, 1)
+script = ExtResource("1_ff5x0")
+length = 30
+metadata/_custom_type_script = "uid://cqaotaw0cd6mp"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0d6nd")
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Pinpng_com-full-moon-png-433920" type="Sprite2D" parent="Body"]
+modulate = Color(0.862745, 0.792157, 0.862745, 1)
+position = Vector2(1.19209e-07, 0)
+scale = Vector2(0.06, 0.058)
+texture = ExtResource("2_8npsq")
+
+[node name="Pinpng_com-full-moon-png-433921" type="Sprite2D" parent="Body"]
+modulate = Color(0.862745, 0.792157, 0.862745, 1)
+position = Vector2(14.6183, -3.65663)
+scale = Vector2(0.043, 0.05)
+texture = ExtResource("2_8npsq")
+
+[node name="Pinpng_com-full-moon-png-433923" type="Sprite2D" parent="Body"]
+modulate = Color(0.862745, 0.792157, 0.862745, 1)
+position = Vector2(2.11832, -9.42499)
+scale = Vector2(0.043, 0.05)
+texture = ExtResource("2_8npsq")
+
+[node name="Pinpng_com-full-moon-png-433924" type="Sprite2D" parent="Body"]
+modulate = Color(0.862745, 0.792157, 0.862745, 1)
+position = Vector2(0.118324, 11.6824)
+scale = Vector2(0.043, 0.05)
+texture = ExtResource("2_8npsq")
+
+[node name="Pinpng_com-full-moon-png-433927" type="Sprite2D" parent="Body"]
+modulate = Color(0.862745, 0.792157, 0.862745, 1)
+position = Vector2(-13.9024, -0.871318)
+rotation = 2.36069
+scale = Vector2(0.043, 0.05)
+texture = ExtResource("2_8npsq")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Body"]
+position = Vector2(1.19209e-07, 0)
+scale = Vector2(0.06, 0.058)
+occluder = SubResource("OccluderPolygon2D_06hps")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_06hps")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_h84go")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_h84go")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_tlvmp")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="HPLabel" type="Label" parent="."]
+visible = false
+offset_left = -29.0
+offset_top = -35.0
+offset_right = 28.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.701961, 0.458824, 0.8, 1)
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 1

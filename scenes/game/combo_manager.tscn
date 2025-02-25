@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://xrhtn4rlqbex"]
+
+[ext_resource type="Script" uid="uid://bsxdgaeguys2b" path="res://scripts/game/managers/combo_manager.gd" id="1_3d1uw"]
+
+[node name="ComboManager" type="Node"]
+script = ExtResource("1_3d1uw")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

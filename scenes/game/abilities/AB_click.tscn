@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bndy3bq6p72uk"]
+
+[ext_resource type="Script" uid="uid://bl7giosr7m320" path="res://scripts/game/abilities/ab_click.gd" id="1_jgc7e"]
+[ext_resource type="Script" uid="uid://bc6j4uf8ghmrg" path="res://scripts/game/smart_area.gd" id="2_fj20p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6tgnm"]
+
+[node name="AbClick" type="Node2D"]
+script = ExtResource("1_jgc7e")
+
+[node name="SmartArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_fj20p")
+metadata/_custom_type_script = "uid://bc6j4uf8ghmrg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SmartArea"]
+shape = SubResource("CircleShape2D_6tgnm")
