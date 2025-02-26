@@ -1,15 +1,18 @@
 extends Control
 
-@export var combo_counter: ComboCounter
+@onready var combo_manager: ComboManager
 
 @onready var label: Label = $PanelContainer/Label
 
-
 func _ready() -> void:
+	combo_manager = find_combo_manager()
+	print_debug(combo_manager)
+	if combo_manager:
+		combo_manager.score_combo_changed.connect(_on_score_combo_changed)
+		Game.event_received.connect(_on_game_event_received)
+
 	visible = false
 	label.modulate = Color.BLUE_VIOLET
-	combo_counter.score_combo_changed.connect(_on_score_combo_changed)
-	Game.event_received.connect(_on_game_event_received)
 
 func _on_score_combo_changed(combo_score: int, combo):
 	if combo_score != 0:
@@ -31,3 +34,11 @@ func hide_label(delay: float):
 	label.modulate = Color.BLUE_VIOLET
 	visible = false
 	
+func find_combo_manager() -> ComboManager:
+	var current_node = get_parent()
+	while current_node != null:
+		for i in current_node.get_children():
+			if i is ComboManager:
+				return i
+		current_node = current_node.get_parent()
+	return null

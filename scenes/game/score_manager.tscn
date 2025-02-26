@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxi4b3i0lxn24"]
+[gd_scene load_steps=2 format=3 uid="uid://dxrslo0i2qhbd"]
 
 [ext_resource type="Script" uid="uid://clmwsixjm1ovs" path="res://scripts/game/managers/score_manager.gd" id="1_sgrrx"]
 

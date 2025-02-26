@@ -1,8 +1,8 @@
-class_name ComboCounter extends Node
+class_name ComboManager extends Node
 
 signal score_combo_changed(combo_score, combo)
 
-@onready var timer: Timer = $Timer
+@onready var timer: Timer = Timer.new()
 
 var _score_combo: int = 0:
 	set(value):
@@ -12,6 +12,8 @@ var _score_combo: int = 0:
 var _combo: int = 0
 
 func _ready() -> void:
+	timer.timeout.connect(_on_timer_timeout)
+	add_child(timer)
 	Game.event_received.connect(_on_game_event_received)
 
 func _on_timer_timeout() -> void:

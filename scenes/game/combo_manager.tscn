@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://xrhtn4rlqbex"]
+[gd_scene load_steps=2 format=3 uid="uid://dkxx3sf4q7mqa"]
 
 [ext_resource type="Script" uid="uid://bsxdgaeguys2b" path="res://scripts/game/managers/combo_manager.gd" id="1_3d1uw"]
 

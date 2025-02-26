@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://j1vpmfqy2tbn"]
+
+[ext_resource type="Script" uid="uid://dey8nv4mqqls" path="res://scripts/game/abilities/ab_character_attack.gd" id="1_8s4qg"]
+[ext_resource type="Script" uid="uid://bc6j4uf8ghmrg" path="res://scripts/game/smart_area.gd" id="2_p1rfg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w2hc1"]
+radius = 45.0444
+
+[node name="ABCharacterAttack" type="Node2D"]
+script = ExtResource("1_8s4qg")
+
+[node name="SmartArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("2_p1rfg")
+metadata/_custom_type_script = "uid://bc6j4uf8ghmrg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SmartArea"]
+shape = SubResource("CircleShape2D_w2hc1")
+
+[connection signal="body_entered" from="SmartArea" to="." method="_on_smart_area_body_entered"]

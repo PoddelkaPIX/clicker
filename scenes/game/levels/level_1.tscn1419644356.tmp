@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ct488rhs2x8uj"]
 
 [ext_resource type="Script" uid="uid://povoq8cqfrb3" path="res://scripts/game/level.gd" id="1_2u4xi"]
-[ext_resource type="PackedScene" uid="uid://bf8e0kty6q643" path="res://scenes/game/characters/core.tscn" id="2_d8fp6"]
+[ext_resource type="PackedScene" uid="uid://bf8e0kty6q643" path="res://scenes/game/core.tscn" id="2_d8fp6"]
 [ext_resource type="PackedScene" uid="uid://bctnoskaf4lbx" path="res://scenes/ui/ui.tscn" id="4_8jnwb"]
 [ext_resource type="PackedScene" uid="uid://bwo4xun8dsieb" path="res://scenes/game/cursor.tscn" id="6_1bryu"]
 [ext_resource type="Script" uid="uid://xsupb7471inp" path="res://scripts/game/managers/character_manager.gd" id="6_2u4xi"]
@@ -124,12 +124,15 @@ size_flags_vertical = 6
 
 [node name="Cursor" parent="." instance=ExtResource("6_1bryu")]
 
+[node name="ComboUi" parent="Cursor" index="0" node_paths=PackedStringArray("combo_manager")]
+combo_manager = NodePath("../../ComboManager")
+
 [node name="CharacterManager" type="Node" parent="."]
 script = ExtResource("6_2u4xi")
 metadata/_custom_type_script = "uid://xsupb7471inp"
 
 [node name="Core" parent="CharacterManager" instance=ExtResource("2_d8fp6")]
-position = Vector2(912, 546)
+position = Vector2(961, 537)
 
 [node name="Spawner" type="Node" parent="CharacterManager" node_paths=PackedStringArray("_spawn_points_container")]
 script = ExtResource("6_unvbt")

@@ -42,12 +42,12 @@ states/idle/node = SubResource("AnimationNodeAnimation_37elk")
 states/idle/position = Vector2(433, 87)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_44cjn"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_qnmw5"), "hit 2", "idle", SubResource("AnimationNodeStateMachineTransition_pn4tr"), "hit", "hit 2", SubResource("AnimationNodeStateMachineTransition_3gv43"), "hit 2", "hit", SubResource("AnimationNodeStateMachineTransition_bea3v"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_1v8wh")]
 
+[sub_resource type="Animation" id="Animation_ryrim"]
+resource_name = "hit"
+
 [sub_resource type="Animation" id="Animation_xdt32"]
 resource_name = "idle"
 loop_mode = 1
-
-[sub_resource type="Animation" id="Animation_ryrim"]
-resource_name = "hit"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lo1y3"]
 _data = {
@@ -87,6 +87,9 @@ script = ExtResource("2_poldg")
 [node name="HP" parent="Attributes" index="0"]
 _value = 1.0
 
+[node name="MoveSpeed" parent="Attributes" index="2"]
+_value = 10.0
+
 [node name="CorePulse" parent="Abilities" index="0" instance=ExtResource("2_7krgo")]
 visible = false
 
@@ -119,7 +122,10 @@ modulate = Color(0.227451, 0.490196, 1, 1)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_ef3yq")
 
-[node name="HPLabel" type="Label" parent="." index="13"]
+[node name="StateDeath" parent="StateHandlers" index="0" node_paths=PackedStringArray("animation_tree")]
+animation_tree = NodePath("../../AnimationTree")
+
+[node name="HPLabel" type="Label" parent="." index="12"]
 unique_name_in_owner = true
 anchors_preset = 8
 anchor_left = 0.5

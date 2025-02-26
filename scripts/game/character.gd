@@ -1,9 +1,5 @@
 class_name Character extends CharacterBody2D
 
-@export var hit_sounds: Array[AudioStreamPlayer]
-
-@onready var difficulty = Game.save_data.difficulty
-
 @onready var hp: Attribute = %HP
 @onready var damage: Attribute = %Damage
 @onready var move_speed: Attribute = %MoveSpeed

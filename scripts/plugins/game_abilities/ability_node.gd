@@ -1,4 +1,4 @@
-class_name Ability extends Node
+class_name Ability extends Node2D
 
 func trigger():
 	_activate()

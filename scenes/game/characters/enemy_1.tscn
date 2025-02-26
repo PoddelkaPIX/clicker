@@ -1,38 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://g510x54dffsq"]
+[gd_scene load_steps=20 format=3 uid="uid://g510x54dffsq"]
 
 [ext_resource type="PackedScene" uid="uid://ce2elcrqiusr5" path="res://scenes/game/_base_character.tscn" id="1_o0kgb"]
 [ext_resource type="AudioStream" uid="uid://bp3ei628oocbp" path="res://assets/sounds/1.mp3" id="2_0vijx"]
+[ext_resource type="PackedScene" uid="uid://j1vpmfqy2tbn" path="res://scenes/game/abilities/AB_character_attack.tscn" id="2_clym1"]
 [ext_resource type="AudioStream" uid="uid://dytp3nqngr1gy" path="res://assets/sounds/2.mp3" id="3_clym1"]
 [ext_resource type="Texture2D" uid="uid://dxbqfnjbr0rls" path="res://assets/images/scale_1200.png" id="4_8doyg"]
 [ext_resource type="Script" uid="uid://cqaotaw0cd6mp" path="res://addons/trail_2d/trail_2d.gd" id="5_gsi4s"]
 [ext_resource type="Texture2D" uid="uid://dy2crba7nf7ht" path="res://assets/images/pinpng.com-full-moon-png-433920.png" id="6_lwcqj"]
-
-[sub_resource type="Animation" id="Animation_0vijx"]
-resource_name = "death"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Pinpng_com-full-moon-png-433920:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.752941), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Trail2D:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_clym1"]
 length = 0.001
@@ -59,6 +33,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_0vijx"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Pinpng_com-full-moon-png-433920:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.752941), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Trail2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8doyg"]
@@ -111,6 +112,8 @@ _value = 1.0
 
 [node name="MoveSpeed" parent="Attributes" index="2"]
 _value = 10.0
+
+[node name="ABCharacterAttack" parent="Abilities" index="0" instance=ExtResource("2_clym1")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sounds" index="0"]
 stream = ExtResource("2_0vijx")
