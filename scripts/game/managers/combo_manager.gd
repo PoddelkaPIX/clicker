@@ -19,11 +19,11 @@ func _ready() -> void:
 func _on_timer_timeout() -> void:
 	Game.send_event(GameEvent.new(Game.GameEventName.POINTS_COUNTED, {'points': abs(_score_combo)}))
 	
-	if _combo > Game.save_data.max_combo:
-		Game.save_data.max_combo = _combo
+	if _combo > Game.save_data.max_combo.value:
+		Game.save_data.max_combo.value = _combo
 	
-	if _score_combo > Game.save_data.max_combo_score:
-		Game.save_data.max_combo_score = _score_combo
+	if _score_combo > Game.save_data.max_combo_score.value:
+		Game.save_data.max_combo_score.value = _score_combo
 		
 	_reset()
 

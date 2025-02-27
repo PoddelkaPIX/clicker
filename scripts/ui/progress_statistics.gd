@@ -12,17 +12,17 @@ func _ready() -> void:
 	core_damage_label.text = pars_attribute(Game.save_data.core_damage)
 	hp_label.text = pars_attribute(Game.save_data.core_hp)
 	
-	max_combo_label.text = str(Game.save_data.max_combo)
-	max_combo_score_label.text = str(Game.save_data.max_combo_score)
+	max_combo_label.text = str(Game.save_data.max_combo.value)
+	max_combo_score_label.text = str(Game.save_data.max_combo_score.value)
 	
-	Game.save_data.max_combo_changed.connect(_on_max_combo_changed)
-	Game.save_data.max_combo_score_changed.connect(_on_max_combo_score_changed)
+	Game.save_data.max_combo.value_changed.connect(_on_max_combo_changed)
+	Game.save_data.max_combo_score.value_changed.connect(_on_max_combo_score_changed)
 
 func pars_attribute(attribute: UseState) -> String:
 	return str(int(attribute.value))
 
-func _on_max_combo_changed(value):
-	max_combo_label.text = str(value)
-	
-func _on_max_combo_score_changed(value):
-	max_combo_score_label.text = str(value)
+func _on_max_combo_changed(new_value):
+	max_combo_label.text = str(new_value)
+
+func _on_max_combo_score_changed(new_value):
+	max_combo_score_label.text = str(new_value)

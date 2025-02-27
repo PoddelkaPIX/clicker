@@ -7,6 +7,6 @@ func _ready() -> void:
 		await owner.ready
 		owner.hp.value_changed.connect(_on_character_hp_value_changed)
 
-func _on_character_hp_value_changed(_old_value, new_value):
+func _on_character_hp_value_changed(new_value):
 	if new_value <= 0:
 		fsm.send_event('Death')

@@ -6,7 +6,7 @@ extends Control
 
 func _ready() -> void:
 	combo_manager = find_combo_manager()
-	print_debug(combo_manager)
+
 	if combo_manager:
 		combo_manager.score_combo_changed.connect(_on_score_combo_changed)
 		Game.event_received.connect(_on_game_event_received)

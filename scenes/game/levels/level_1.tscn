@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ct488rhs2x8uj"]
+[gd_scene load_steps=12 format=3 uid="uid://ct488rhs2x8uj"]
 
 [ext_resource type="Script" uid="uid://povoq8cqfrb3" path="res://scripts/game/level.gd" id="1_2u4xi"]
 [ext_resource type="PackedScene" uid="uid://bf8e0kty6q643" path="res://scenes/game/characters/core.tscn" id="2_d8fp6"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bsxdgaeguys2b" path="res://scripts/game/managers/combo_manager.gd" id="8_2u4xi"]
 [ext_resource type="Script" uid="uid://c7y7kjfsi4ga6" path="res://scripts/game/managers/difficulty_manager.gd" id="9_o1xna"]
 [ext_resource type="Script" uid="uid://cy7gmqppavt1r" path="res://scripts/game/managers/game_manager.gd" id="10_o1xna"]
+[ext_resource type="Script" uid="uid://clmwsixjm1ovs" path="res://scripts/game/managers/score_manager.gd" id="11_nnhhk"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_2u4xi")
@@ -20,22 +21,22 @@ position = Vector2(961, 537)
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="SpawnPoint" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-617, -77)
+position = Vector2(-337, -39)
 
 [node name="SpawnPoint2" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-617, 157)
+position = Vector2(-337, 195)
 
 [node name="SpawnPoint3" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-617, 603)
+position = Vector2(-337, 641)
 
 [node name="SpawnPoint4" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-677, 433)
+position = Vector2(-397, 471)
 
 [node name="SpawnPoint5" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-677, 883)
+position = Vector2(-397, 921)
 
 [node name="SpawnPoint6" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-526, 1150)
+position = Vector2(-246, 1188)
 
 [node name="SpawnPoint7" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(5, 1209)
@@ -62,22 +63,22 @@ position = Vector2(1623, 1200)
 position = Vector2(1834, 1200)
 
 [node name="SpawnPoint15" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(2721, 1025)
+position = Vector2(2391, 1094)
 
 [node name="SpawnPoint16" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(2721, 832)
+position = Vector2(2391, 901)
 
 [node name="SpawnPoint17" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(2726, 584)
+position = Vector2(2396, 653)
 
 [node name="SpawnPoint18" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(2712, 345)
+position = Vector2(2382, 414)
 
 [node name="SpawnPoint19" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(2712, 69)
+position = Vector2(2382, 138)
 
 [node name="SpawnPoint20" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(2694, -60)
+position = Vector2(2364, 9)
 
 [node name="SpawnPoint21" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(1834, -77)
@@ -149,5 +150,9 @@ metadata/_custom_type_script = "uid://c7y7kjfsi4ga6"
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("10_o1xna")
 metadata/_custom_type_script = "uid://cy7gmqppavt1r"
+
+[node name="ScoreManager" type="Node" parent="."]
+script = ExtResource("11_nnhhk")
+metadata/_custom_type_script = "uid://clmwsixjm1ovs"
 
 [editable path="Cursor"]

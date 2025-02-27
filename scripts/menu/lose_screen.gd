@@ -5,7 +5,7 @@ extends Menu
 func _ready() -> void:
 	super._ready()
 	time_label.text = 'Время: ' + Helpers.time_to_string(Game.time)
-	experience_label.text = 'Опыт: ' + str(Game.save_data.experience)
+	experience_label.text = 'Опыт: ' + str(Game.save_data.experience.value)
 
 func _on_timer_timeout() -> void:
 	

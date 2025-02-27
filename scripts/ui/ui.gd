@@ -8,9 +8,9 @@ var secs: int = 0
 var mins: int = 0
 
 func  _ready() -> void:
-	Game.save_data.experience_changed.connect(_on_game_experience_changed)
-	experience_label.text = str(int(Game.save_data.experience))
-	best_time_label.text = "Лучшее время: "+str(Helpers.time_to_string(Game.save_data.best_time))
+	Game.save_data.experience.value_changed.connect(_on_game_experience_changed)
+	experience_label.text = str(int(Game.save_data.experience.value))
+	best_time_label.text = "Лучшее время: "+str(Helpers.time_to_string(Game.save_data.best_time.value))
 
 func _physics_process(_delta: float) -> void:
 	time_label.text = Helpers.time_to_string(Game.time)

@@ -1,13 +1,13 @@
 class_name Attribute extends Node
 
-signal value_changed(value, new_value)
+signal value_changed(new_value)
 signal min_value_changed(value, new_value)
 signal max_value_changed(value, new_value)
 
 @export_category('Values')
 @export var _value := 0.0:
 	set(new_value):
-		value_changed.emit(_value, new_value)
+		value_changed.emit(new_value)
 		_value = new_value
 
 @export var _min_value := 0:

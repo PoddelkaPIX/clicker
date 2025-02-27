@@ -81,17 +81,13 @@ _data = {
 }
 
 [node name="Core" instance=ExtResource("1_66ddm")]
-collision_mask = 0
+collision_layer = 5
 script = ExtResource("2_poldg")
-
-[node name="HP" parent="Attributes" index="0"]
-_value = 1.0
 
 [node name="MoveSpeed" parent="Attributes" index="2"]
 _value = 10.0
 
 [node name="CorePulse" parent="Abilities" index="0" instance=ExtResource("2_7krgo")]
-visible = false
 
 [node name="AnimationTree" parent="." index="5"]
 tree_root = SubResource("AnimationNodeStateMachine_7krgo")
