@@ -12,4 +12,4 @@ func _on_timer_timeout() -> void:
 	$UpgradesMenuBtn.disabled = false
 
 func _on_upgrades_menu_btn_pressed() -> void:
-	get_tree().change_scene_to_file('res://scenes/menus/upgrades_menu/upgrades_menu.tscn')
+	get_tree().change_scene_to_file('res://scenes/menu/upgrades_menu.tscn')

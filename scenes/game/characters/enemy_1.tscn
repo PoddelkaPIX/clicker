@@ -111,7 +111,7 @@ _value = 1.0
 _value = 1.0
 
 [node name="MoveSpeed" parent="Attributes" index="2"]
-_value = 10.0
+_value = 20.0
 
 [node name="ABCharacterAttack" parent="Abilities" index="0" instance=ExtResource("2_clym1")]
 
