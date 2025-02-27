@@ -46,64 +46,30 @@ horizontal_alignment = 1
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer3/VBoxContainer2"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer3/VBoxContainer2"]
-layout_mode = 2
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer3/VBoxContainer2/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer2/VBoxContainer/HBoxContainer4"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Радиус клика:"
-
-[node name="ClickRangeLabel" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer2/VBoxContainer/HBoxContainer4"]
+[node name="CursorAttributeList" type="VBoxContainer" parent="MarginContainer/VBoxContainer3/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-text = "0"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer3/VBoxContainer2/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer2/CursorAttributeList"]
+layout_mode = 2
+text = "КУРСОР"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer3/VBoxContainer2/CursorAttributeList"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer2/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Урон клика:"
-
-[node name="ClickDamageLabel" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer2/VBoxContainer/HBoxContainer2"]
+[node name="CoreAttributeList" type="VBoxContainer" parent="MarginContainer/VBoxContainer3/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-text = "100"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer3/VBoxContainer2/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer3/VBoxContainer2/CoreAttributeList"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer2/VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer2/CoreAttributeList"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Урон ядра:"
+text = "ЯДРО"
 
-[node name="CoreDamageLabel" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer2/VBoxContainer/HBoxContainer3"]
-unique_name_in_owner = true
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer3/VBoxContainer2/CoreAttributeList"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "0"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer3/VBoxContainer2/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer2/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Здоровье:"
-
-[node name="HPLabel" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer2/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "100546"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer3"]
 layout_mode = 2
@@ -116,33 +82,6 @@ horizontal_alignment = 1
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer3/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer3/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer3/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Макс. комбо:"
-
-[node name="MaxComboLabel" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="StatisticList" type="VBoxContainer" parent="MarginContainer/VBoxContainer3/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-text = "0"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer3/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Макс. оч. за комбо:"
-
-[node name="MaxComboScoreLabel" type="Label" parent="MarginContainer/VBoxContainer3/VBoxContainer/VBoxContainer/HBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0"

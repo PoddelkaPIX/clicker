@@ -2,10 +2,12 @@ extends Menu
 @onready var time_label: Label = $Time
 @onready var experience_label: Label = $ExperienceLabel
 
+var experience = Game.save_data.experience
+
 func _ready() -> void:
 	super._ready()
 	time_label.text = 'Время: ' + Helpers.time_to_string(Game.time)
-	experience_label.text = 'Опыт: ' + str(Game.save_data.experience.value)
+	experience_label.text = 'Опыт: ' + str(experience.value)
 
 func _on_timer_timeout() -> void:
 	

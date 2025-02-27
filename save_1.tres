@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="SaveData" load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://scripts/use_state_res.gd" id="1_71sox"]
+[ext_resource type="Script" path="res://scripts/save_data.gd" id="2_tio5m"]
+[ext_resource type="Script" path="res://scripts/upgrade_res.gd" id="3_qiovv"]
+
+[sub_resource type="Resource" id="Resource_ygjaf"]
+script = ExtResource("1_71sox")
+value = 2.0
+
+[sub_resource type="Resource" id="Resource_hcs6t"]
+script = ExtResource("1_71sox")
+value = 4.0
+
+[sub_resource type="Resource" id="Resource_aajyx"]
+script = ExtResource("1_71sox")
+value = 10.0
+
+[sub_resource type="Resource" id="Resource_6frge"]
+script = ExtResource("1_71sox")
+value = 1581.0
+
+[sub_resource type="Resource" id="Resource_2lg00"]
+script = ExtResource("1_71sox")
+value = 26.0833
+
+[sub_resource type="Resource" id="Resource_153p2"]
+script = ExtResource("1_71sox")
+value = 7.0
+
+[sub_resource type="Resource" id="Resource_cradj"]
+script = ExtResource("1_71sox")
+value = 80.0
+
+[resource]
+script = ExtResource("2_tio5m")
+core_attributes = Dictionary[String, ExtResource("1_71sox")]({
+"damage": SubResource("Resource_ygjaf"),
+"hp": SubResource("Resource_hcs6t")
+})
+cursor_attributes = Dictionary[String, ExtResource("1_71sox")]({
+"damage": SubResource("Resource_aajyx")
+})
+statistics = Dictionary[String, ExtResource("1_71sox")]({
+"best_time": SubResource("Resource_2lg00"),
+"max_combo": SubResource("Resource_153p2"),
+"max_combo_score": SubResource("Resource_cradj")
+})
+upgrades = Dictionary[String, ExtResource("3_qiovv")]({})
+experience = SubResource("Resource_6frge")
+difficulty = 1.0

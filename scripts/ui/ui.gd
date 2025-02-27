@@ -7,16 +7,19 @@ extends Control
 var secs: int = 0
 var mins: int = 0
 
+var experience = Game.save_data.experience
+var best_time = Game.save_data.statistics['best_time']
+
 func  _ready() -> void:
-	Game.save_data.experience.value_changed.connect(_on_game_experience_changed)
-	experience_label.text = str(int(Game.save_data.experience.value))
-	best_time_label.text = "Лучшее время: "+str(Helpers.time_to_string(Game.save_data.best_time.value))
+	experience.value_changed.connect(_on_game_experience_changed)
+	experience_label.text = str(int(experience.value))
+	best_time_label.text = "Лучшее время: "+str(Helpers.time_to_string(best_time.value))
 
 func _physics_process(_delta: float) -> void:
 	time_label.text = Helpers.time_to_string(Game.time)
 
-func _on_game_experience_changed(experience):
-	experience_label.text = str(int(experience))
+func _on_game_experience_changed(_experience):
+	experience_label.text = str(int(_experience))
 	
 func _on_time_node_secs_changed(_secs: Variant) -> void:
 	secs = _secs

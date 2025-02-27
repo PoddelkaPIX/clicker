@@ -131,6 +131,7 @@ libraries = {
 shape = SubResource("CircleShape2D_okvfq")
 
 [node name="AnimationTree" parent="." index="7"]
+root_node = NodePath("%AnimationTree/..")
 tree_root = SubResource("AnimationNodeStateMachine_qu7hi")
 anim_player = NodePath("../AnimationPlayer")
 

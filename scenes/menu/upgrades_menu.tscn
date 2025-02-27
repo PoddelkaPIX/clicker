@@ -12,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_atc4h")
 
 [node name="ExperienceLabel" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,76 +47,8 @@ offset_bottom = 140.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="CoreHPContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="CoreHPLabel" type="Label" parent="MarginContainer/VBoxContainer/CoreHPContainer"]
+[node name="UpgradeList" type="VBoxContainer" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "1"
-
-[node name="CoreHPButton" type="Button" parent="MarginContainer/VBoxContainer/CoreHPContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 40
-text = "Здоровье ядра +1"
-
-[node name="CoreHPPriceLabel" type="Label" parent="MarginContainer/VBoxContainer/CoreHPContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "0"
-
-[node name="CursorDamageContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="CursorDamageLabel" type="Label" parent="MarginContainer/VBoxContainer/CursorDamageContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "1"
-
-[node name="CursorDamageBtn" type="Button" parent="MarginContainer/VBoxContainer/CursorDamageContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 40
-text = "Урон клика +1"
-
-[node name="CursorDamagePriceLabel" type="Label" parent="MarginContainer/VBoxContainer/CursorDamageContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "0"
-
-[node name="CoreDamageContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="CoreDamageLabel" type="Label" parent="MarginContainer/VBoxContainer/CoreDamageContainer3"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "0"
-
-[node name="CoreDamageBtn" type="Button" parent="MarginContainer/VBoxContainer/CoreDamageContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 40
-text = "Урон ядра +1"
-
-[node name="CoreDamagePriceLabel" type="Label" parent="MarginContainer/VBoxContainer/CoreDamageContainer3"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "0"
 
 [connection signal="pressed" from="ContinueBtn" to="." method="_on_continue_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/CoreHPContainer/CoreHPButton" to="." method="_on_core_hp_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/CursorDamageContainer2/CursorDamageBtn" to="." method="_on_cursor_damage_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/CoreDamageContainer3/CoreDamageBtn" to="." method="_on_core_damage_btn_pressed"]

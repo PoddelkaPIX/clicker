@@ -11,6 +11,9 @@ var _score_combo: int = 0:
 
 var _combo: int = 0
 
+var max_combo = Game.save_data.statistics['max_combo']
+var max_combo_score = Game.save_data.statistics['max_combo_score']
+
 func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
 	add_child(timer)
@@ -19,11 +22,11 @@ func _ready() -> void:
 func _on_timer_timeout() -> void:
 	Game.send_event(GameEvent.new(Game.GameEventName.POINTS_COUNTED, {'points': abs(_score_combo)}))
 	
-	if _combo > Game.save_data.max_combo.value:
-		Game.save_data.max_combo.value = _combo
+	if _combo > max_combo.value:
+		max_combo.value = _combo
 	
-	if _score_combo > Game.save_data.max_combo_score.value:
-		Game.save_data.max_combo_score.value = _score_combo
+	if _score_combo > max_combo_score.value:
+		max_combo_score.value = _score_combo
 		
 	_reset()
 

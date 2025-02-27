@@ -88,8 +88,10 @@ script = ExtResource("2_poldg")
 _value = 10.0
 
 [node name="CorePulse" parent="Abilities" index="0" instance=ExtResource("2_7krgo")]
+unique_name_in_owner = true
 
 [node name="AnimationTree" parent="." index="5"]
+root_node = NodePath("%AnimationTree/..")
 tree_root = SubResource("AnimationNodeStateMachine_7krgo")
 anim_player = NodePath("../AnimationPlayer")
 

@@ -1,28 +1,30 @@
 extends Control
 
-@onready var click_range_label: Label = %ClickRangeLabel
-@onready var click_damage_label: Label = %ClickDamageLabel
-@onready var core_damage_label: Label = %CoreDamageLabel
-@onready var hp_label: Label = %HPLabel
-@onready var max_combo_label: Label = %MaxComboLabel
-@onready var max_combo_score_label: Label = %MaxComboScoreLabel
+const ITEM = preload("res://scenes/ui/progress_statistics_list_item.tscn")
+
+@onready var cursor_attribute_list: VBoxContainer = %CursorAttributeList
+@onready var core_attribute_list: VBoxContainer = %CoreAttributeList
+@onready var statistic_list: VBoxContainer = %StatisticList
+
+var damage = Game.save_data.core_attributes['damage']
+var hp = Game.save_data.core_attributes['hp']
+
+var core_attributes = Game.save_data.core_attributes
+var cursor_attributes = Game.save_data.cursor_attributes
+var statistics = Game.save_data.statistics
 
 func _ready() -> void:
-	click_damage_label.text = pars_attribute(Game.save_data.cursor_damage)
-	core_damage_label.text = pars_attribute(Game.save_data.core_damage)
-	hp_label.text = pars_attribute(Game.save_data.core_hp)
+	_fill_list(cursor_attributes, cursor_attribute_list)
+	_fill_list(core_attributes, core_attribute_list)
+	_fill_list(statistics, statistic_list)
 	
-	max_combo_label.text = str(Game.save_data.max_combo.value)
-	max_combo_score_label.text = str(Game.save_data.max_combo_score.value)
-	
-	Game.save_data.max_combo.value_changed.connect(_on_max_combo_changed)
-	Game.save_data.max_combo_score.value_changed.connect(_on_max_combo_score_changed)
+func _fill_list(items: Dictionary, list):
+	for key in items.keys():
+		var item = _create_item(key, items[key])
+		list.add_child(item)
 
-func pars_attribute(attribute: UseState) -> String:
-	return str(int(attribute.value))
-
-func _on_max_combo_changed(new_value):
-	max_combo_label.text = str(new_value)
-
-func _on_max_combo_score_changed(new_value):
-	max_combo_score_label.text = str(new_value)
+func _create_item(text, value) -> Control:
+	var item = ITEM.instantiate()
+	item.text = text
+	item.value = value
+	return item

@@ -13,7 +13,8 @@ enum GameEventName {
 	CORE_DESTROYED,
 	DEAL_DAMAGE_TO_ENEMY
 }
-var save_data: SaveData
+
+var save_data: SaveData = SaveData.new()
 
 var time: float = 0
 
@@ -23,10 +24,7 @@ var game_state: GameState = GameState.PLAY:
 		game_state_changed.emit(value)
 
 func _ready() -> void:
-	if ResourceLoader.exists("user://save_1.tres"):
-		save_data = load("user://save_1.tres")
-	else:
-		save_data = SaveData.new()
+	save_data = save_data.load_save()
 	game_state_changed.connect(_on_game_state_changed)
 
 func _physics_process(delta: float) -> void:
@@ -35,7 +33,7 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action('ui_focus_next'):
-		ResourceSaver.save(save_data, 'user://save_1.tres')
+		save_data.save()
 		get_tree().quit()
 		
 func _on_game_state_changed(new_state):

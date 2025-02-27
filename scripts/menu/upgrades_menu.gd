@@ -1,59 +1,40 @@
 extends Menu
 
-@onready var experience_label: Label = $ExperienceLabel
+const UPGRADE_LIST_ITEM = preload("res://scenes/menu/upgrades_menu_upgrade_list_item.tscn")
 
-@onready var cursor_damage_label: Label = %CursorDamageLabel
-@onready var cursor_damage_price_label: Label = %CursorDamagePriceLabel
+@onready var upgrade_list: VBoxContainer = %UpgradeList
+@onready var experience_label: Label = %ExperienceLabel
 
-@onready var core_hp_label: Label = %CoreHPLabel
-@onready var core_hp_price_label: Label = %CoreHPPriceLabel
+var core_hp = Game.save_data.core_attributes['hp']
+var core_damage = Game.save_data.core_attributes['damage']
+var cursor_damage = Game.save_data.cursor_attributes['damage']
+var experience = Game.save_data.experience
 
-@onready var core_damage_label: Label = %CoreDamageLabel
-@onready var core_damage_price_label: Label = %CoreDamagePriceLabel
-
-@onready var save_data = Game.save_data
+var upgrades = Game.save_data.upgrades
 
 func _ready() -> void:
 	super._ready()
-	experience_label.text = 'Опыт:' + str(save_data.experience.value)
+	experience_label.text = 'Опыт:' + str(experience.value)
 	
-	set_label_text(cursor_damage_label, save_data.cursor_damage.value)
-	set_label_text(core_hp_label, save_data.core_hp.value)
-	set_label_text(core_damage_label, save_data.core_damage.value)
+	fill_list(upgrades, upgrade_list)
+	experience.value_changed.connect(_on_game_experience_changed)
 
-	cursor_damage_price_label.text = str(int(save_data.cursor_damage_upgrade_price.value))
-	core_hp_price_label.text = str(int(save_data.core_hp_upgrade_price.value))
-	core_damage_price_label.text = str(int(save_data.core_damage_upgrade_price.value))
-
-	save_data.experience.value_changed.connect(_on_game_experience_changed)
+func fill_list(items, list):
+	print(items, list)
+	for key in items.keys():
+		
+		var item = items[key]
+		var list_item = UPGRADE_LIST_ITEM.instantiate()
+		list_item.text = key
+		list_item.value = item.value
+		list_item.price = item.price
+		list.add_child(list_item)
 
 func set_label_text(label, value):
-	label.text = str(int(value))
+	label.text = str(value)
 
 func _on_game_experience_changed(new_value):
 	experience_label.text = 'Опыт:' + str(new_value)
 
 func _on_continue_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/game/levels/level_1.tscn")
-
-func _on_cursor_damage_btn_pressed() -> void:
-	buy_upgrade(save_data.cursor_damage, save_data.cursor_damage_upgrade_price, 1, 25)
-	cursor_damage_price_label.text = str(int(save_data.cursor_damage_upgrade_price.value))
-	set_label_text(cursor_damage_label, save_data.cursor_damage.value)
-
-func _on_core_hp_button_pressed() -> void:
-	buy_upgrade(save_data.core_hp, save_data.core_hp_upgrade_price, 1, 25)
-	core_hp_price_label.text = str(int(save_data.core_hp_upgrade_price.value))
-	set_label_text(core_hp_label, save_data.core_hp.value)
-
-func _on_core_damage_btn_pressed() -> void:
-	buy_upgrade(save_data.core_damage, save_data.core_damage_upgrade_price, 1, 250)
-	core_damage_price_label.text = str(int(save_data.core_damage_upgrade_price.value))
-	set_label_text(core_damage_label, save_data.core_damage.value)
-
-func buy_upgrade(attribute, price: UseState, summand: int, add_cost: int):
-	if save_data.experience.value < price.value: return
-	
-	save_data.experience.value -= price.value
-	price.value += add_cost
-	attribute.value += summand

@@ -191,6 +191,8 @@ transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransitio
 script = ExtResource("1_ghkfx")
 
 [node name="SmartArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("2_hngp4")
 metadata/_custom_type_script = "uid://bc6j4uf8ghmrg"
 
